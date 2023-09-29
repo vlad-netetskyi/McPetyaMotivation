@@ -30,12 +30,12 @@ public class PostController {
     }
 
     @GetMapping("/post/add")
-    public String getAddVehicles(Model model) {
+    public String getAddPost(Model model) {
         return "post-add";
     }
 
     @PostMapping("/post/add")
-    public String AddVehicle(@RequestParam String description, @RequestParam Part img, Model mod) throws IOException {
+    public String addPost(@RequestParam String description, @RequestParam Part img, Model mod) throws IOException {
         InputStream fileContent = img.getInputStream();
         byte[] fileAsByteArray = IOUtils.toByteArray(fileContent);
         System.out.println("Added photo with size = " + fileAsByteArray.length);
