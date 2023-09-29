@@ -18,7 +18,7 @@ import java.io.InputStream;
 
 @Controller
 public class PostController {
-    @Autowired                                      // для чого це?
+    @Autowired(required = false)                                      // для чого це?
     private PostRepository postRepository;
 
     @GetMapping("/post")
