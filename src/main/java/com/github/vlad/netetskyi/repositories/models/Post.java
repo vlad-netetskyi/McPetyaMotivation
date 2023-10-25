@@ -1,9 +1,8 @@
-package org.example.models;
+package com.github.vlad.netetskyi.repositories.models;
 
 import jakarta.persistence.*;
 import org.apache.tomcat.util.codec.binary.Base64;
 
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Objects;
@@ -21,6 +20,11 @@ public class Post {
     public Post(String description, byte[] img) {
         this.description = description;
         this.img = img;
+    }
+
+    public Post(String description) {
+        this.description = description;
+        this.img = new byte[]{};
     }
 
     public Post() {
