@@ -7,17 +7,17 @@
 </head>
 <body>
 <div class="container mt-5">
-    <form action="#" th:action="@{/post/add}" method="POST" th:object="${post}">
+    <form action="#" th:action="@{/post/add}" method="POST" th:object="${post}" enctype="multipart/form-data">
         <h3>Додати мотивацію</h3>
         <div class="mb-3">
             <label for="desctiptionInput" class="form-label">Мотивація</label>
             <input type="text" class="form-control" id="desctiptionInput" th:field="*{description}">
 
 </div>
-      <!--  <div class="mb-3">
+      <div class="mb-3">
             <label for="fileInput" class="form-label">Фото</label>
-            <input type="file" class="form-control" id="fileInput" name="img" required>
-        </div>-->
+            <input type="file" class="form-control" id="fileInput" th:field="*{img}" accept="image/*" required>
+        </div>
         <button type="submit" class="btn btn-primary">Додати</button>
     </form>
 </div>
