@@ -2,6 +2,7 @@ package com.github.vlad.netetskyi.controllers;
 
 import com.github.vlad.netetskyi.controllers.models.Post;
 import com.github.vlad.netetskyi.repositories.PostRepository;
+import com.github.vlad.netetskyi.services.PostService;
 import jakarta.servlet.http.HttpSession;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,13 @@ import java.io.InputStream;
 public class PostController {
     @Autowired
     private PostRepository postRepository;
+    @Autowired
+    private PostService postService;
 
     @GetMapping("/post")
     public String post(HttpSession session, Model model) {
-        Iterable<com.github.vlad.netetskyi.repositories.models.Post> post = postRepository.findAll();
-        model.addAttribute("post", post);
+       com.github.vlad.netetskyi.repositories.models.Post randomPost = postService.getRandomPost();
+        model.addAttribute("post", randomPost);
         return "post";
     }
 
@@ -50,6 +53,13 @@ public class PostController {
             System.out.println("Error" + e.getMessage());
             throw e;
         }
+
+    }
+    @GetMapping("/")
+    public String showRandomPost(Model model) {
+        com.github.vlad.netetskyi.repositories.models.Post randomPost = postService.getRandomPost();
+        model.addAttribute("post", randomPost);
+        return "post";
     }
 }
 
